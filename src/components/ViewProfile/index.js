@@ -23,25 +23,30 @@ const ViewProfile=()=>{
             const options={
                 method:"PUT",
                 headers:{
-                    'Authorization':`Bearer ${token}`,
+                    'authorization':`Bearer ${token}`,
                     'Content-Type': `application/json`
                 },
                 body:JSON.stringify({name, username, email, gender})
             };
 
-            const response= await fetch(api, options);
-            const data = await response.json();
-            console.log("save edit response:", data);
-            if(response.ok){
-                console.log("successfully edited the profile");
-                setMsg("Profile edit Successful");
-                setTimeout(()=>{setMsg("");},3000);
-            }
-            else{
-                console.log("something went wrong in editing profile:",data);
-                setError(data.message);
-                setTimeout(()=>{setError("")},3000);
-                call();
+            try{
+                const response= await fetch(api, options);
+                const data = await response.json();
+                console.log("save edit response:", data);
+                if(response.ok){
+                    console.log("successfully edited the profile");
+                    setMsg("Profile edit Successful");
+                    setTimeout(()=>{setMsg("");},3000);
+                }
+                else{
+                    console.log("something went wrong in editing profile:",data);
+                    setError(data.message);
+                    setTimeout(()=>{setError("")},3000);
+                    call();
+                }
+            } catch(er){
+                console.log("something went wrong while rendering the profile");
+                setError("something went wrong");
             }
         }
         setEdit(ps=>!ps);
@@ -52,17 +57,21 @@ const ViewProfile=()=>{
         const options={
             method:"GET",
             headers:{
-                'Authorization':`Bearer ${token}`
+                'authorization':`Bearer ${token}`
             }
         };
-        const response= await fetch(api, options);
-        const data = await response.json();
-        console.log("profile data:", data);
-        if(response.ok){
-            const {name, username, email, gender}=data;
-            setName(name); setUserName(username); setEmail(email); setGender(gender);
-        }
-        else{
+        try{
+            const response= await fetch(api, options);
+            const data = await response.json();
+            console.log("profile data:", data);
+            if(response.ok){
+                const {name, username, email, gender}=data;
+                setName(name); setUserName(username); setEmail(email); setGender(gender);
+            }
+            else{
+                console.log("something went wrong");
+            }
+        } catch(er){
             console.log("something went wrong");
         }
     }

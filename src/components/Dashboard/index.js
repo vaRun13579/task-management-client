@@ -14,7 +14,7 @@ class Dashboard extends Component {
 
     deleteATask = async (id) => {
         const {URL}=this.props;
-        const api = `${URL}/${id}/delete`;
+        const api = `${URL}/task/${id}/delete`;
         const token = Cookies.get('jwt_token');
         const options = {
             method: "DELETE",

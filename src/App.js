@@ -29,7 +29,8 @@ String.prototype.trim = function (c=""){
 };
 
 function App() {
-  const URL="http://localhost:5000".trim("/");
+  // const URL="http://localhost:5000".trim("/");
+  const URL="https://task-management-server-6wjt.onrender.com/".trim("/");
   const [name, setName] = useState("");
   const [userId, setUserId] = useState("");
 
