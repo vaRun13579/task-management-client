@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import { useUrl } from "../../App"; 
 import "./index.css";
 
-export default (props)=>{
+const TaskItem= (props)=>{
     const {item, deletes, reloadList}=props;
     const {id, title, description, status, priority, bgColor}=item;
     const [edit, setEdit]=useState(false);
@@ -96,3 +96,5 @@ export default (props)=>{
         </li>
     )
 }
+
+export default TaskItem;

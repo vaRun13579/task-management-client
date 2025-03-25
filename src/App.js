@@ -11,26 +11,26 @@ import ViewProfile from "./components/ViewProfile";
 
 import './App.css';
 
-String.prototype.trim = function (c=""){
-  try{
-      let i=0, j=this.length;
-      while(i<j){
-          if(this[i]===c) i++;
-          else break;
-      }
-      while(j>i){
-          if(this[j-1]===c) j--;
-          else break;
-      }
-      return this.slice(i,j);
-  } catch(er){
-      return this;
-  }
-};
+// String.prototype.trim = function (c=""){
+//   try{
+//       let i=0, j=this.length;
+//       while(i<j){
+//           if(this[i]===c) i++;
+//           else break;
+//       }
+//       while(j>i){
+//           if(this[j-1]===c) j--;
+//           else break;
+//       }
+//       return this.slice(i,j);
+//   } catch(er){
+//       return this;
+//   }
+// };
 
 function App() {
   // const URL="http://localhost:5000".trim("/");
-  const URL="https://task-management-server-6wjt.onrender.com/".trim("/");
+  const URL="https://task-management-server-6wjt.onrender.com".trim("/");
   const [name, setName] = useState("");
   const [userId, setUserId] = useState("");
 

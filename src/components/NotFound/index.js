@@ -1,2 +1,3 @@
 import "./index.css";
-export default  ()=><div className="not-found-msg">hmm...! The page has not found</div>
+const NotFound=  ()=><div className="not-found-msg">hmm...! The page has not found</div>
+export default NotFound;
