@@ -1,0 +1,125 @@
+.list-item{
+    padding:10px;
+    border-radius:30px;
+    display:flex;
+    justify-content: space-between;
+    gap:10px;
+    margin-bottom:10px;
+    max-width:500px;
+}
+
+
+.item-wrapper{
+    flex-grow:1;
+    position:relative;
+}
+
+.item-heading{
+    font-family:cursive;
+    color:black;
+    font-size:25px;
+    font-weight:500;
+    margin:0px;
+    text-align: center;
+}
+.line{
+    border:solid white 0.5px;
+    width:80%;
+}
+.item-desc{
+    color:black;
+    font-size:12px;
+    font-weight:300;
+    text-align: center;
+}
+
+.functional-buttons{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    width:100px;
+    align-items: center;
+    /* border:solid white 0.5px; */
+}
+
+.status{
+    background-color:white;
+    color:black;
+    font-size:8px;
+    font-weight:800;
+    padding:8px 15px;
+    border-radius: 10px;
+    height:fit-content;
+    width:fit-content;
+    text-align: center;
+    outline:none;
+}
+
+.priority{
+    background-color: white;
+    border-radius: 5px;
+    font-size:8px;
+    font-weight:900;
+    padding:2px 5px;
+    height:fit-content;
+    width:fit-content;
+    text-align: center;
+    outline:none;
+    display: flex;
+    gap:2px;
+    align-items: center;
+    position:absolute;
+    left:10px;
+    bottom:0px;
+}
+
+.dot{
+    display:inline-block;
+    height:5px;
+    width:5px;
+    border-radius:50%;
+}
+.delete-item-button{
+    cursor:pointer;
+    padding:8px 15px;
+    background-color: black;
+    color:white;
+    font-size:8px;
+    font-weight:800;
+    border:none;
+    outline:none;
+    border-radius:12px;
+}
+
+.edit-item{
+    cursor:pointer;
+    padding:8px 15px;
+    background-color: orange;
+    color:white;
+    font-size:8px;
+    font-weight:800;
+    border:none;
+    outline:none;
+    border-radius:12px;
+}
+
+.input-task-item{
+    background-color: transparent;
+    outline:none;
+    border:solid white 0.5px;
+    width:100%;
+}
+.text-area-task-item{
+    background-color: transparent;
+    outline: none;
+    border:solid white 0.5px;
+    width:100%
+}
+
+@media screen and (min-width:700px){
+    .list-item{
+        min-width: 600px;
+        max-width:1000px;
+        width:80%;
+    }
+}

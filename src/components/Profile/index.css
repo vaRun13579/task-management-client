@@ -1,0 +1,12 @@
+.profile-pic{
+    height:50px;
+    width:50px;
+    color:white;
+    font-weight: 900;
+    background-color: black;
+    border-radius: 50%;
+    text-align: center;
+    font-size:30px;
+    align-content: center;
+    border:#ADADAD solid 2px;
+}

@@ -1,0 +1,16 @@
+# React (Frontend)
+/node_modules
+package-lock.json
+
+# System Files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn

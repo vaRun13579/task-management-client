@@ -1,0 +1,131 @@
+.login-page {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    font-family: 'Roboto';
+    padding: 40px;
+  }
+  
+  .login-container {
+    background-color: #272727;
+    border-radius: 20px;
+    align-items:stretch;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    flex-grow:1;
+    max-width: 600px;
+  }
+  
+  .display-logo {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .logo {
+    width: 180px;
+    margin-bottom: 50px;
+  }
+  
+  .label {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .input {
+    border: solid #445162 2px;
+    outline: none;
+    border-radius: 2px;
+    padding: 20px;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 30px;
+    background-color: transparent;
+  }
+  
+  .input::placeholder {
+    color: #64655e;
+  }
+  
+  .login-button {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: #6163ee;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin-top: 40px;
+  }
+  
+  .err-display {
+    color: red;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 15px;
+  }
+
+  .register-note{
+    font-size:10px;
+    text-align: center;
+    color:#ADADAD;
+  }
+  .signup-link{
+    color:steelblue;
+    font-size:11px;
+    font-weight:500;
+  }
+  
+  .login-text{
+    color:#6163ee;
+  }
+
+  @media screen and (max-width: 767px) {
+    .logo {
+      width: 120px;
+    }
+  
+    .input {
+      border: solid #445162 2px;
+      outline: none;
+      border-radius: 2px;
+      padding: 10px;
+      font-size: 15px;
+      color: white;
+      margin-bottom: 20px;
+      background-color: transparent;
+    }
+  
+    .login-container {
+      background-color: #272727;
+      border-radius: 20px;
+      padding: 20px;
+      align-items: stretch;
+      display: flex;
+      flex-direction: column;
+      flex-grow:1;
+    }
+    .label {
+      font-size: 15px;
+    }
+  
+    .login-button {
+      border: none;
+      border-radius: 10px;
+      background-color: #6163ee;
+      padding: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      margin-top: 20px;
+    }
+  
+    .err-display {
+      font-size: 15px;
+    }
+  }
+  

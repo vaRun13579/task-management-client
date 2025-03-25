@@ -1,0 +1,131 @@
+.profile-main-page{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    position:relative;
+    padding:20px;
+    background-color: #101b2d;
+}
+
+/* *{
+    border:solid red 0.3px;
+} */
+
+.back-button{
+    position:fixed;
+    top:30px;
+    left:30px;
+    background-color: #e3e3dc;
+    color:#111111;
+    border:none;
+    outline:none;
+    padding:5px 10px;
+    font-size:10px;
+    font-weight: 900;
+    border-radius: 10px;
+}
+
+.profile-details-container{
+    background-color: antiquewhite;
+    padding:20px;
+    border-radius:30px;
+    flex-grow:1;
+    position: relative;
+    max-width:450px;
+    overflow: hidden;
+}
+
+.edit-button-profile{
+    position:absolute;
+    right:20px;
+    top:20px;
+    background-color:black;
+    border:solid silver 2px;
+    color:white;
+    font-weight: 900;
+    border-radius: 8px;
+    padding:5px;
+    text-align: center;
+    width:60px;
+}
+
+.profile-pic-name-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    width:100%;
+}
+
+.profile-pic-container{
+    color:white;
+    font-size:40px;
+    font-weight: 900;
+    width:80px;
+    height:80px;
+    border-radius: 50%;
+    text-align: center;
+    align-content:center;
+    background-color: black;
+    border:solid silver 3px;
+}
+
+.input-profile-name-edit{
+    background-color: transparent;
+    color:#101b2d;
+    font-size:30px;
+    font-weight:700;
+    margin:4px 0px 10px;
+    outline:none;
+    text-align: center;
+    align-self:stretch;
+    border:none;
+}
+
+.labled-data{
+    color:black;
+    font-size:14px;
+    font-weight:800;
+    margin-right:5px;
+    display:inline-block;
+    margin-bottom:5px;
+}
+
+.input-data{
+    border:none;
+    outline:none;
+    background-color: transparent;
+    font-size:12px;
+    font-weight:600;
+    color:#101b2d;
+}
+
+.ermessage{
+    color:red;
+    min-height:20px;
+    font-size:12px;
+    font-weight:700;
+    margin:0px;
+}
+
+.successmsg{
+    color:#17870c;
+    min-height:20px;
+    font-size:12px;
+    font-weight:700;
+    margin:0px;
+}
+
+.editable{
+    animation:blink 1s linear infinite;
+}
+
+@keyframes blink {
+    0%{
+        text-decoration: underline;
+    }
+    100%{
+        text-decoration: none;
+    }
+}

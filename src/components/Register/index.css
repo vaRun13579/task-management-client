@@ -1,0 +1,122 @@
+*{
+    box-sizing: border-box;
+    font-family: "Roboto",sans-serif;
+}
+
+.register-container{
+    background-color: #272727;
+    padding:20px;
+    flex-grow:1;
+    border-radius:20px;
+    font-family:"Roboto";
+    max-width:600px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.group-input{
+    /* border:solid white; */
+    flex-grow:1;
+    max-width:270px;
+    width:45%;
+    margin-bottom:10px;
+}
+
+.register-label{
+    display:inline-block;
+    color:white;
+    font-size:13px;
+    font-weight:600;
+}
+.register-text{
+    margin:5px;
+    text-align: center;
+    color:#6163ee;
+    max-width:600px;
+    width:100%;
+    /* border:white solid; */
+}
+
+.register-button{
+    background-color:#6163ee;
+    cursor:pointer;
+    padding:10px;
+    border-radius:10px;
+    font-size:13px;
+    color:white;
+    outline:none;
+    border:none;
+    width:100%;
+    max-width:250px;
+    font-weight:600;
+    flex-grow:1;
+    height:60px;
+}
+.register-button:active{
+    scale:0.9;
+}
+
+.password-cont{
+    max-width:100%;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    /* border:solid white; */
+}
+
+.reg-input{
+    outline:none;
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    border:none;
+}
+
+.pw{
+    flex-grow:1;
+    margin-bottom:0px;
+}
+
+.error-para{
+    width:100%;
+    text-align: center;
+    margin:5px;
+    color:red;
+    font-size:13px;
+    font-weight:500;
+}
+.success-msg{
+    color:skyblue;
+    text-align: center;
+    margin:5px;
+    font-size: 13px;
+    font-weight: 500;
+}
+@media screen and (max-width:767px){
+    .error-para{
+        max-width: 400px;
+        text-align:left;
+    }
+    .success-msg{
+        max-width: 400px;
+        text-align:left;
+    }
+    .register-container{
+        display:block;
+    }
+    .reg-input{
+        width:100%;
+        max-width:400px;
+    }
+    .group-input{
+        width:100%;
+    }
+    .password-cont{
+        width:100%;
+        max-width: 400px;
+    }
+    .register-button{
+        float:center;
+    }
+} 
