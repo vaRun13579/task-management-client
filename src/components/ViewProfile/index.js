@@ -78,6 +78,7 @@ const ViewProfile=()=>{
 
     useEffect(()=>{
         call();
+        // eslint-disable-next-line
     },[]);
 
     return(
