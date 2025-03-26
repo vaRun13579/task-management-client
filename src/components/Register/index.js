@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FallingLines } from "react-loader-spinner";
 import {useUrl} from "../../App.js";
 import "./index.css";
 
@@ -12,6 +13,7 @@ const Register = () => {
     const [gender, setGender] = useState(genderArray[0]);
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
+    const [isLoading, setLoading]=useState(false);
     const {URL}=useUrl();
 
     const trigSuccess = () => {
@@ -25,6 +27,8 @@ const Register = () => {
             setError("Please fill out all fields.");
             return;
         }
+
+        setLoading(true);
 
         const regApi = URL+"/register";
 
@@ -46,7 +50,7 @@ const Register = () => {
             const response = await fetch(regApi, options);
             const data = await response.json();
             console.log("Register response:", data);
-
+            setLoading(false);
             if (response.ok) {
                 trigSuccess();
                 setError("");
@@ -59,6 +63,7 @@ const Register = () => {
                 setError(data.message || "Something went wrong!");
             }
         } catch (error) {
+            setLoading(false);
             setError("Server error! Please try again later.");
         }
     };
@@ -98,7 +103,8 @@ const Register = () => {
                     </select>
                 </div>
 
-                <button type="submit" className="register-button">Register</button>
+                {!isLoading && <button type="submit" className="register-button">Register</button>}
+                {isLoading && <div className="loader-container"><FallingLines color="white" width="50" visible={true} ariaLabel="falling-circles-loading" /></div>}
 
                 {error && <p className="error-para">* {error}</p>}
                 {success && <p className="success-msg">User registered successfully, Please login.</p>}

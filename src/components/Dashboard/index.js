@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { FallingLines } from "react-loader-spinner";
 import {useNavigate} from "react-router-dom";
 import Cookies from "js-cookie";
 import {useUrl} from "../../App";
@@ -10,9 +11,12 @@ import "./index.css";
 const filters = ["", "done", "in progress", "pending", "completed"];
 
 class Dashboard extends Component {
-    state = { todoList: [], filter: filters[0], taskDone: 0, name: "", createTodo: false, searchQuery: "", proFilter:""};
+    state = { todoList: [], filter: filters[0], taskDone: 0, name: "", createTodo: false, searchQuery: "", proFilter:"", isLoading:false};
+
+    setLoading=(v)=>{this.setState({isLoading:v})}
 
     deleteATask = async (id) => {
+        this.setState({isLoading:true});
         const {URL}=this.props;
         const api = `${URL}/task/${id}/delete`;
         const token = Cookies.get('jwt_token');
@@ -40,6 +44,7 @@ class Dashboard extends Component {
     };
 
     fetchList = async () => {
+        this.setState({isLoading:true});
         const token = Cookies.get('jwt_token');
         const {URL}=this.props;
         const api = URL;
@@ -49,15 +54,24 @@ class Dashboard extends Component {
                 'Authorization': `Bearer ${token}`
             }
         };
-        const response = await fetch(api, options);
-        const data = await response.json();
-        if (response.ok) {
-            const n = data.filter(ele => "done completed".includes(ele.status.toLowerCase())).length;
-            this.setState({ todoList: data, taskDone: n });
+        try{
+            const response = await fetch(api, options);
+            const data = await response.json();
+            this.setState({isLoading:false});
+            if (response.ok) {
+                const n = data.filter(ele => "done completed".includes(ele.status.toLowerCase())).length;
+                this.setState({ todoList: data, taskDone: n });
+            } else{
+                console.log("something went wrong while loading the list");
+            }
+        } catch(er){
+            this.setState({isLoading:false});
+            console.log(er.message);
         }
     };
 
     createTodoFun = async (obj) => {
+        this.setState({isLoading:true});
         const token = Cookies.get("jwt_token");
         const {URL}=this.props;
         const api = URL+"/task/add";
@@ -76,7 +90,7 @@ class Dashboard extends Component {
 
     getGreeting = (d) => {
         const hours = d.getHours();
-        if (hours >= 6 && hours < 12) return "Good Morning";
+        if (hours >= 4 && hours < 12) return "Good Morning";
         if (hours >= 12 && hours < 16) return "Good Afternoon";
         if (hours >= 16 && hours < 20) return "Good Evening";
         return "Good Night";
@@ -91,7 +105,7 @@ class Dashboard extends Component {
     };
 
     render() {
-        const { todoList, filter, taskDone, name, createTodo, searchQuery, proFilter } = this.state;
+        const { todoList, filter, taskDone, name, createTodo, searchQuery, proFilter, isLoading } = this.state;
         const todos = todoList.length;
         let percent = todos === 0 ? "0%" : Math.round((taskDone / todos) * 100) + "% Done";
         
@@ -147,10 +161,10 @@ class Dashboard extends Component {
                         <li onClick={() => this.setState({ filter: filters[3] })} className={filter === "pending" ? "active-filters" : "filters"}>Pending</li>
                         <li onClick={() => this.setState({ filter: filters[4] })} className={filter === "completed" ? "active-filters" : "filters"}>Completed</li>
                     </ul>
-
+                    <div className="loader-container"><FallingLines color="white" width="50" visible={isLoading} ariaLabel="falling-circles-loading" /></div>
                     {filteredTasks.length > 0 ? (
                         <ul className="task-list">
-                            {filteredTasks.map(ele => <TaskItem key={ele.id} deletes={this.deleteATask} reloadList={this.fetchList} item={ele} />)}
+                            {filteredTasks.map(ele => <TaskItem key={ele.id} deletes={this.deleteATask} reloadList={this.fetchList} setLoading={this.setLoading} item={ele} />)}
                         </ul>
                     ) : (
                         <div className="indication">No matching tasks found.</div>

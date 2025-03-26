@@ -1,26 +1,30 @@
 import Cookies from "js-cookie";
 import { useNavigate, Link, Navigate } from "react-router-dom";
+import {FallingLines} from "react-loader-spinner";
 import { useState } from "react";
 import { useUrl } from "../../App";
 import "./index.css";
 
+const pageView=["Loader", "Success", "Fail"];
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPw, setShowPw]=useState(false);
-  const [isFail, setIsFail] = useState(false);
+  // const [isFail, setIsFail] = useState(false);
   const [errMsg, setErrMsg] = useState("");
+  const [view, setView]=useState(pageView[1]);
   const navigate = useNavigate();
   const {URL}=useUrl();
 
   const checkDetails = async (ev) => {
+    setView(pageView[0]);
     ev.preventDefault();
     const url = URL+"/login";
     console.log(url);
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username:username.trim(), password}),
     };
 
     try{
@@ -29,15 +33,18 @@ const LoginPage = () => {
 
       if (response.ok) {
         Cookies.set("jwt_token", data.jwt_token, { expires: 30 });
-        setIsFail(false);
+        // setIsFail(false);
+        setView(pageView[1]);
         navigate("/", { replace: true });
       } else {
-        setIsFail(true);
+        // setIsFail(true);
+        setView(pageView[2])
         setErrMsg(data.message);
       }
     } catch(er){
       console.log(er.message);
-      setIsFail(true);
+      // setIsFail(true);
+      setView(pageView[2]);
       setErrMsg(er.message);
     }
   };
@@ -79,8 +86,9 @@ const LoginPage = () => {
           <label className="label" htmlFor="checkbox">Show Password</label>
         </span>
         <br />
-        <button className="login-button" type="submit">Login</button>
-        {isFail && <p className="err-display">{`*${errMsg}`}</p>}
+        {view!==pageView[0] && <button className="login-button" type="submit">Login</button>}
+        {view===pageView[0] && <div className="loader-container"><FallingLines color="white" width="100" visible={true} ariaLabel="falling-circles-loading" /></div>}
+        {view===pageView[2] && <p className="err-display">{`*${errMsg}`}</p>}
         <p className="register-note">
           If you do not have an account, <Link className="signup-link" to="/Register">click here to Sign up</Link>
         </p>

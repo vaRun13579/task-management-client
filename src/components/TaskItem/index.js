@@ -4,7 +4,7 @@ import { useUrl } from "../../App";
 import "./index.css";
 
 const TaskItem= (props)=>{
-    const {item, deletes, reloadList}=props;
+    const {item, deletes, reloadList, setLoading}=props;
     const {id, title, description, status, priority, bgColor}=item;
     const [edit, setEdit]=useState(false);
     const [eTitle, setTitle]=useState(title);
@@ -41,11 +41,18 @@ const TaskItem= (props)=>{
                 })
             };
 
-            const response=await fetch(api, options);
-            const data=await response.json();
-            if (response.ok){reloadList();console.log("update todo item,", data);}
-            else{
-                console.log(data);
+            try{
+                setLoading(true);
+                const response=await fetch(api, options);
+                const data=await response.json();
+                if (response.ok){reloadList();console.log("update todo item,", data);}
+                else{
+                    setLoading(false);
+                    console.log(data);
+                }
+            } catch(er){
+                setLoading(false);
+                console.log(er.message);
             }
         }
         call();
