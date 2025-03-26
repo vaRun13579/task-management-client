@@ -6,6 +6,7 @@
     background-color: black;
     font-family: 'Roboto';
     padding: 40px;
+    position: relative;
   }
   
 .loader-container{

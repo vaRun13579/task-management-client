@@ -3,6 +3,20 @@
     font-family: "Roboto",sans-serif;
 }
 
+.reg-login-btn{
+    position:absolute;
+    background-color:#6163ee;
+    top:30px;
+    right:30px;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    font-size:15px;
+    font-weight:700;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
 .register-container{
     background-color: #272727;
     padding:20px;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {Link} from "react-router-dom";
 import { FallingLines } from "react-loader-spinner";
 import {useUrl} from "../../App.js";
 import "./index.css";
@@ -70,6 +71,7 @@ const Register = () => {
 
     return (
         <div className="login-page">
+            <Link to="/login"><button className="reg-login-btn">Login</button></Link>
             <form onSubmit={onRegister} className="register-container">
                 <h1 className="register-text">Register</h1>
 
